@@ -1,0 +1,24 @@
+{
+  "name": "my-scratch3-offline",
+  "version": "0.1.0",
+  "description": "scratch3 離線編輯器非官方版",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "clean": "rimraf ./scratch3-linux-x64 && rimraf ./scratch3-win32-x64",
+    "copy": "cp -Rf ../scratch-gui/build ./app",
+    "package": "npm run clean && electron-packager . scratch3 --asar --platform=linux,win32",
+    "package:linux": "rimraf ./scratch3-linux-x64 && electron-packager . scratch3 --asar --platform=linux",
+    "package:win32": "rimraf ./scratch3-win32-x64 && electron-packager . scratch3 --asar --platform=win32"
+  },
+  "keywords": [
+    "scratch3",
+    "offline"
+  ],
+  "author": "t301000 <t301000@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^2.0.4",
+    "rimraf": "^2.6.2"
+  }
+}
