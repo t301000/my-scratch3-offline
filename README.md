@@ -13,7 +13,7 @@ npm install
 ```
 
 ## Step 2
-複製 build 出來的檔案
+複製 build 的結果到 app 目錄
 ```bash
 npm run copy
 ```
@@ -39,3 +39,24 @@ npm run package:win32
 linux 版在 scratch3-linux-x64 目錄
 
 win32 版在 scratch3-win32-x64 目錄
+
+## Step 4
+將打包產出的目錄以 7zip 壓縮
+
+```bash
+# 壓縮 linux and win32
+npm run compress
+# 壓縮 linux
+npm run compress:linux
+# 壓縮 win32
+npm run compress:win32
+```
+
+## 其他
+
+```bash
+# 以 electron 開啟
+npm start
+# 清除 app and 打包產出的目錄
+npm run clean
+```
