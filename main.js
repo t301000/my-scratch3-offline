@@ -20,6 +20,12 @@ const {app, BrowserWindow} = require('electron')
       // 你可能會將它們存成陣列，現在該是時候清除相關的物件了。
       win = null
     })
+
+    win.on('close', () => {
+      // 拿掉 window 物件的參照。如果你的應用程式支援多個視窗，
+      // 你可能會將它們存成陣列，現在該是時候清除相關的物件了。
+      win.destroy()
+    })
   }
   
   
