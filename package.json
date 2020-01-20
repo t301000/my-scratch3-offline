@@ -22,7 +22,14 @@
   "license": "ISC",
   "devDependencies": {
     "electron": "^2.0.16",
+<<<<<<< Updated upstream
+=======
+    "electron-installer-debian": "^1.1.0",
+>>>>>>> Stashed changes
     "electron-packager": "^13.0.1",
     "rimraf": "^2.6.2"
+  },
+  "dependencies": {
+    "@trodi/electron-splashscreen": "^0.3.4"
   }
 }

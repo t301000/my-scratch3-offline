@@ -1,4 +1,10 @@
+<<<<<<< Updated upstream
 const {app, BrowserWindow, dialog} = require('electron')
+=======
+const {app, BrowserWindow, path} = require('electron')
+const Splashscreen = require("@trodi/electron-splashscreen");
+// import * as Splashscreen from "@trodi/electron-splashscreen";
+>>>>>>> Stashed changes
   
   // Keep a global reference of the window object, if you don't, the window will
   // be closed automatically when the JavaScript object is garbage collected.
@@ -6,21 +12,41 @@ const {app, BrowserWindow, dialog} = require('electron')
   
   function createWindow () {
     // 建立瀏覽器視窗。
-    win = new BrowserWindow({width: 800, height: 600})
+    //win = new BrowserWindow({width: 800, height: 600})
   
     // 並載入應用程式的 index.html。
-    win.loadFile('app/index.html')
+    //win.loadFile('app/index.html')
   
     // Open the DevTools.
     // win.webContents.openDevTools()
+
+    var windowOptions = {
+        width: 1024,
+        height: 768,
+        show: false,
+        frame: true
+    };
+    window = Splashscreen.initSplashScreen({
+        windowOpts: windowOptions,
+        templateUrl: `${__dirname}/ntpc-opensource.gif`,
+        delay: 0,
+        minVisible: 4000,
+        splashScreenOpts: {
+            height: 400,
+            width: 400,
+            transparent: true,
+        },
+    });
+    window.loadURL(`file://${__dirname}/app/index.html`);
   
     // 視窗關閉時會觸發。
-    win.on('closed', () => {
+    window.on('closed', () => {
       // 拿掉 window 物件的參照。如果你的應用程式支援多個視窗，
       // 你可能會將它們存成陣列，現在該是時候清除相關的物件了。
       win = null
     })
 
+<<<<<<< Updated upstream
     // 參考 https://www.brainbell.com/javascript/dialog-show-message-box.html
     win.on('close', (event) => {
       event.preventDefault()
@@ -69,7 +95,21 @@ const {app, BrowserWindow, dialog} = require('electron')
         //Cancel button pressed
         }
       })
+=======
+<<<<<<< Updated upstream
+    win.on('close', () => {
+      // 拿掉 window 物件的參照。如果你的應用程式支援多個視窗，
+      // 你可能會將它們存成陣列，現在該是時候清除相關的物件了。
+      win.destroy()
+>>>>>>> Stashed changes
     })
+=======
+    // window.on('close', () => {
+    //   // 拿掉 window 物件的參照。如果你的應用程式支援多個視窗，
+    //   // 你可能會將它們存成陣列，現在該是時候清除相關的物件了。
+    //   win.destroy();
+    // })
+>>>>>>> Stashed changes
   }
   
   
