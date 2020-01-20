@@ -1,4 +1,4 @@
-const {app, BrowserWindow} = require('electron')
+const {app, BrowserWindow, dialog} = require('electron')
   
   // Keep a global reference of the window object, if you don't, the window will
   // be closed automatically when the JavaScript object is garbage collected.
@@ -21,10 +21,54 @@ const {app, BrowserWindow} = require('electron')
       win = null
     })
 
-    win.on('close', () => {
-      // 拿掉 window 物件的參照。如果你的應用程式支援多個視窗，
-      // 你可能會將它們存成陣列，現在該是時候清除相關的物件了。
-      win.destroy()
+    // 參考 https://www.brainbell.com/javascript/dialog-show-message-box.html
+    win.on('close', (event) => {
+      event.preventDefault()
+
+      let options = {}
+      //Can be "none", "info", "error", "question" or "warning".
+      options.type = "question"
+      //Array of texts for buttons.
+      options.buttons = ["&是","&否","&取消"]
+
+      //Index of the button in the buttons array which will be selected by default when the message box opens.
+      options.defaultId = 2
+
+      //Title of the message box
+      options.title = "是否要關閉 Scratch3 ？"
+      
+      //More information of the message
+      // options.detail = "Press Yes button to quit"
+      
+      //Content of the message box
+      options.message = "系統可能不會儲存您所做的變更。"
+
+      //options.icon = "/path/image.png"
+
+      //The index of the button to be used to cancel the dialog, via the Esc key
+      options.cancelId = 2
+
+      //Prevent Electron on Windows to figure out which one of the buttons are common buttons (like "Cancel" or "Yes")
+      options.noLink = true
+
+      //Normalize the keyboard access keys
+      options.normalizeAccessKeys = true
+
+      /*Syntax:
+       dialog.showMessageBox(BrowserWindow, options, callback);
+      */
+      dialog.showMessageBox(win, options, (res, checked) => {
+        if (res === 0){
+        //Yes button pressed
+        win.destroy()
+        }
+        else if (res === 1) {
+        //No button pressed
+        }
+        else if (res === 2){
+        //Cancel button pressed
+        }
+      })
     })
   }
   

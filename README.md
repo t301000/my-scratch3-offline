@@ -5,7 +5,7 @@
 git clone https://github.com/LLK/scratch-gui.git
 cd scratch-gui
 npm install
-npm build
+npm run build
 cd ..
 git clone https://github.com/t301000/my-scratch3-offline.git
 cd my-scratch3-offline
