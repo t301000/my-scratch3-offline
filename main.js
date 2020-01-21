@@ -6,7 +6,7 @@ const {app, BrowserWindow, dialog} = require('electron')
   
   function createWindow () {
     // 建立瀏覽器視窗。
-    win = new BrowserWindow({width: 800, height: 600})
+    win = new BrowserWindow({icon:'favicon.png' ,width: 1280, height: 720})
   
     // 並載入應用程式的 index.html。
     win.loadFile('app/index.html')
@@ -59,14 +59,14 @@ const {app, BrowserWindow, dialog} = require('electron')
       */
       dialog.showMessageBox(win, options, (res, checked) => {
         if (res === 0){
-        //Yes button pressed
-        win.destroy()
+          //Yes button pressed
+          win.destroy()
         }
         else if (res === 1) {
-        //No button pressed
+          //No button pressed
         }
         else if (res === 2){
-        //Cancel button pressed
+          //Cancel button pressed
         }
       })
     })
