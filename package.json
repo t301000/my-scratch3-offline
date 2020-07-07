@@ -21,7 +21,7 @@
   "author": "t301000 <t301000@gmail.com>",
   "license": "ISC",
   "devDependencies": {
-    "electron": "^2.0.16",
+    "electron": "^7.2.4",
     "electron-packager": "^13.0.1",
     "rimraf": "^2.6.2"
   }
